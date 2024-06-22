@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	p {
+		color: white;
+		margin-left: 12px;
+		margin-right: 12px;
+		font-family: cursive;
+	}
+
+	.profit-show,
+	.profit-show div {
+		border: 1px solid black;
+		bottom: 0;
+		position: absolute;
+	}
+
+	.profit-show p {
+		position: absolute;
+	}
+
+	.profit-show p.profit-percent {
+		bottom: 0;
+		right: 0;
+		font-weight: bolder;
+		font-size: 20px;
+	}
+</style>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<body>
+	<div class="first-line">
+		<div id="investicija" style="display: inline-block;"></div>
+		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 512 512"
+			style="position: relative; bottom:150px;">
+			<path fill="#99D9EA" stroke="black" stroke-width="3"
+				d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
+		</svg>
+		<div id="cost-per-area"
+			style="width: 200px; height: 200px; background-color: #6868E1; text-align: center; padding-top: 30px; display: inline-block; position: relative; bottom: 120px;">
+			<p>3.5M ÷ 1,880m²</p>
+			<p>=</p>
+			<p style="font-size: 30px;">1,862€</p>
+		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 512 512"
+			style="position: relative; bottom:150px;">
+			<path fill="#99D9EA" stroke="black" stroke-width="3"
+				d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
+		</svg>
+		<div id="proizvod" style="display: inline-block;"></div>
+	</div>
+	<div class="second-line">
+		<div style="display: inline-block;bottom: 125px; position: relative; left: 149px;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 320 512">
+				<path fill="#99D9EA" stroke="black" stroke-width="3"
+					d="M318 177.5c3.8-8.8 2-19-4.6-26l-136-144C172.9 2.7 166.6 0 160 0s-12.9 2.7-17.4 7.5l-136 144c-6.6 7-8.4 17.2-4.6 26S14.4 192 24 192H96l0 288c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32l0-288h72c9.6 0 18.2-5.7 22-14.5z" />
+			</svg>
+			<div>
+				<div style="color: black; font-size: 30px; font-family: cursive;">3.5M€</div>
+			</div>
+			<div style="    position: relative; left: -128px;top: 31px;">
+				<div style="font-family: cursive;">Opis investicije:</div>
+				<div style="font-family: cursive;">Stambena zgrada...</div>
+			</div>
+
+		</div>
+		<div class="profit-show"
+			style="width: 250px; height: 250px; background-color: #FFF777; position: relative; display: inline-block; margin-left: 263px;">
+			<p>425€</p>
+			<p class="profit-percent">50</p>
+			<div style="width: 200px; height: 200px; background-color: #8B8BE8; ">
+				<p>425€</p>
+				<p class="profit-percent">50</p>
+				<div style="width: 160px; height: 160px; background-color: #6868E1; ">
+					<p style="font-weight: bolder; font-size: 30px; left:80px; top:-50px;">2,287€</p>
+					<p style=" bottom: 0;">1,862€</p>
+				</div>
+			</div>
+		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 512 512"
+			style="position: relative; bottom: 80px; left:45px">
+			<path fill="#99D9EA" stroke="black" stroke-width="3"
+				d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z" />
+		</svg>
+		<div style="display: inline-block; position: relative; bottom: 110px; left: 80px; text-align: center;">
+			<div style="color: black; font-family: cursive;">prodaja</div>
+			<div style="color: black; font-size: 30px; font-family: cursive;">5.1M€</div>
+		</div>
+		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 320 512"
+			style="display: inline-block; position: relative; bottom: 210px;">
+			<path fill="#99D9EA" stroke="black" stroke-width="3"
+				d="M2 334.5c-3.8 8.8-2 19 4.6 26l136 144c4.5 4.8 10.8 7.5 17.4 7.5s12.9-2.7 17.4-7.5l136-144c6.6-7 8.4-17.2 4.6-26s-12.5-14.5-22-14.5l-72 0 0-288c0-17.7-14.3-32-32-32L128 0C110.3 0 96 14.3 96 32l0 288-72 0c-9.6 0-18.2 5.7-22 14.5z" />
+		</svg>
+
+	</div>
+
+
+
+</body>
+
+<!-- Create a div where the graph will take place -->
+
+<script>
+
+	const data = {
+
+		investicija: {
+			children: [
+				{
+					"name": "Plac",
+					"value": 1300000,
+					"image": "some_image.jpg",
+					"link": "http://somelink.com?id=1",
+					"color": "#6060e0"
+				},
+				{
+					"name": "Softcost",
+					"value": 300000,
+					"color": "#ff8259",
+					// "children": [
+					// 	{
+					// 		"name": "Nadzor",
+					// 		"image": "some_image.jpg",
+					// 		"link": "http://somelink.com?id=1",
+					// 		"value": 100000
+					// 	},
+					// 	{
+					// 		"name": "Dozvola",
+					// 		"image": "some_image.jpg",
+					// 		"link": "http://somelink.com?id=1",
+					// 		"value": 100000
+					// 	},
+					// 	{
+					// 		"name": "Direkcija",
+					// 		"image": "some_image.jpg",
+					// 		"link": "http://somelink.com?id=1",
+					// 		"value": 100000
+					// 	}
+					// ]
+				},
+				{
+					"name": "Hardcost",
+					"value": 1900000,
+					"color": "#fff214",
+					"image": "some_image.jpg",
+					"link": "http://somelink.com?id=1",
+					// "children": [
+					// 	{
+					// 		"name": "Izvodjenje",
+					// 		"value": 600000,
+					// 		"children": [
+					// 			{
+					// 				"job_id": "1",
+					// 				"name": "Obezbedjenje temeljne jame",
+					// 				"value": 200000,
+					// 				"izvodjac": "InKop",
+					// 				"izvodjac_id": 21,
+					// 				"trajanje": 33,
+					// 				"image": "some_image.jpg",
+					// 				"link": "http://somelink.com?job_id=1",
+					// 				"rok": "20-12-2024"
+					// 			},
+					// 			{
+					// 				"job_id": "2",
+					// 				"name": "Iskop",
+					// 				"value": 200000,
+					// 				"izvodjac": "InKop",
+					// 				"izvodjac_id": 21,
+					// 				"trajanje": 33,
+					// 				"image": "some_image.jpg",
+					// 				"link": "http://somelink.com?job_id=1",
+					// 				"rok": "20-12-2024"
+					// 			},
+					// 			{
+					// 				"job_id": "3",
+					// 				"name": "Temeljna ploca",
+					// 				"value": 200000,
+					// 				"izvodjac": "InKop",
+					// 				"izvodjac_id": 21,
+					// 				"trajanje": 33,
+					// 				"image": "some_image.jpg",
+					// 				"link": "http://somelink.com?job_id=1",
+					// 				"rok": "20-12-2024"
+					// 			}
+					// 		]
+					// 	},
+					// 	{
+					// 		"name": "Materijal",
+					// 		"value": 1300000,
+					// 		"children": [
+					// 			{
+					// 				"order_id": "3",
+					// 				"name": "Armaturna mreza",
+					// 				"value": 300000,
+					// 				"dobavljac": "Metal metal",
+					// 				"dobavljac_id": 22,
+					// 				"image": "some_image.jpg",
+					// 				"link": "http://somelink.com?job_id=1",
+					// 				"isporuka": "20-12-2024"
+					// 			},
+					// 			{
+					// 				"order_id": "3",
+					// 				"name": "Plocice",
+					// 				"value": 300000,
+					// 				"dobavljac": "RA KERAMIKA",
+					// 				"dobavljac_id": 21,
+					// 				"image": "some_image.jpg",
+					// 				"link": "http://somelink.com?job_id=1",
+					// 				"isporuka": "20-12-2024"
+					// 			},
+					// 			{
+					// 				"order_id": "3",
+					// 				"name": "Lepak za fasadu",
+					// 				"value": 700000,
+					// 				"dobavljac": "ROMA",
+					// 				"dobavljac_id": 25,
+					// 				"image": "some_image.jpg",
+					// 				"link": "http://somelink.com?job_id=1",
+					// 				"isporuka": "20-12-2024"
+					// 			}
+					// 		]
+					// 	}
+					// ]
+				}
+			]
+		},
+
+		proizvod: {
+			children: [
+				{
+					"name": "Stanovi",
+					"kvadrata": 1284,
+					"komada": 21,
+					"color": "#6868E1",
+					"children": [
+						{
+							"name": "a",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 1,
+							"kvadrata": 45.44,
+							"value": 28,
+							"color": "#6868E1",
+
+						},
+						{
+							"name": "b",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 2,
+							"kvadrata": 85.5,
+							"value": 19,
+							"color": "#8B8BE8",
+						},
+						{
+							"name": "c",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 2,
+							"kvadrata": 152,
+							"value": 18,
+							"color": "#8B8BE8",
+						}
+						,
+						{
+							"name": "d",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 2,
+							"kvadrata": 152,
+							"value": 19,
+							"color": "#8B8BE8",
+						}
+					]
+				},
+				{
+					"name": "Lokali",
+					"kvadrata": 480,
+					"komada": 2,
+					"color": "#ff8259",
+					"children": [
+						{
+							"name": "e",
+							"opis": "Lep s pogledom na ulicu",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 14,
+							"color": "#FFB39B",
+						},
+						{
+							"name": "f",
+							"opis": "Na 2 sprata, idealan za restoran",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 11,
+							"color": "#FFB39B",
+						},
+						{
+							"name": "g",
+							"opis": "Veliki magacin",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 15,
+							"color": "#FFB097",
+						},
+						{
+							"name": "h",
+							"opis": "Veliki magacin",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 16,
+							"color": "#FFB097",
+						}
+					]
+				},
+				{
+					"name": "Garažna mesta",
+					"kvadrata": 980,
+					"komada": 21,
+					"color": "#fff214",
+					"children": [
+						{
+							"name": "i",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-2",
+							"kvadrata": 12.5,
+							"value": 12,
+							"color": "#FFF888",
+						},
+						{
+							"name": "j",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-2",
+							"kvadrata": 12.5,
+							"value": 13,
+							"color": "#FFF888",
+						},
+						{
+							"name": "k",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 13,
+							"color": "#FFF888",
+						},
+						{
+							"name": "l",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 25,
+							"color": "#FFF331",
+						},
+						{
+							"name": "m",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 16,
+							"color": "#FFF888",
+						},
+						{
+							"name": "n",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 28,
+							"color": "#FFF331",
+						}
+					]
+				},
+				{
+					"name": "Magacin",
+					"kvadrata": 980,
+					"komada": 21,
+					"children": [
+						{
+							"name": "i",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-2",
+							"kvadrata": 12.5,
+							"value": 13,
+							"color": "#FFFDF8",
+						},
+						{
+							"name": "j",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-2",
+							"kvadrata": 12.5,
+							"value": 16,
+							"color": "#FFFDF8",
+						},
+						{
+							"name": "k",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 16,
+							"color": "#FFFDF8",
+						},
+						{
+							"name": "l",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 28,
+							"color": "#FFFDF8",
+						},
+						{
+							"name": "m",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 18,
+							"color": "#FFFDF8",
+						},
+						{
+							"name": "n",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 30,
+							"color": "#FFFDF8",
+						}
+					]
+				}
+			]
+		}
+	}
+
+
+
+
+	// set the dimensions and margins of the graph
+	const margin = { top: 15, right: 10, bottom: 10, left: 10 },
+		width = 350 - margin.left - margin.right,
+		height = 350 - margin.top - margin.bottom;
+
+	// append the svg object to the body of the page
+
+	function render(selector) {
+		const svg = d3.select(`#${selector}`)
+			.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform",
+				`translate(${margin.left}, ${margin.top})`);
+
+		// Give the data to this cluster layout:
+		const root = d3.hierarchy(data[selector]).sum(function (d) { return d.value }) // Here the size of each leave is given in the 'value' field in input data
+
+		// Then d3.treemap computes the position of each element of the hierarchy
+		d3.treemap()
+			.size([width, height])
+			.paddingTop(15)
+			.paddingRight(7)
+			.paddingInner(3)      // Padding between each rectangle
+			(root)
+
+		// use this information to add rectangles:
+		svg
+			.selectAll("rect")
+			.data(root.leaves())
+			.join("rect")
+			.attr('x', function (d) { return d.x0; })
+			.attr('y', function (d) { return d.y0+6; })
+			.attr('width', function (d) { return d.x1 - d.x0; })
+			.attr('height', function (d) { return d.y1 - d.y0; })
+			.style("stroke", "black")
+			.style("fill", function (d) { return d.data.color })
+
+		// and to add the text labels
+		svg
+			.selectAll("text")
+			.data(root.leaves())
+			.enter()
+			.append("text")
+			.attr("x", function (d) { return d.x0 + 5 })    // +10 to adjust position (more right)
+			.attr("y", function (d) { return d.y0 + 20 })    // +20 to adjust position (lower)
+			.text(function (d) { return d.data.name })
+			.attr("font-size", "19px")
+			.attr("fill", "black")
+
+		// and to add the text labels
+		svg
+			.selectAll("vals")
+			.data(root.leaves())
+			.enter()
+			.append("text")
+			.attr("x", function (d) { return d.x0 + 5 })    // +10 to adjust position (more right)
+			.attr("y", function (d) { return d.y0 + 37 })    // +20 to adjust position (lower)
+			.text(function (d) { return d.data.value })
+			.attr("font-size", "16px")
+			.attr("fill", "white")
+
+		// Add title for the 3 groups
+		svg
+			.selectAll("titles")
+			.data(root.descendants().filter(function (d) { return d.depth == 1 }))
+			.enter()
+			.append("text")
+			.attr("x", function (d) { return d.x0 })
+			.attr("y", function (d) { if(selector=="investicija") return d.y0; return d.y0 + 18 })
+			.text(function (d) { return d.data.name })
+			.attr("font-size", "19px")
+			.attr("fill", function (d) { return d.data.color })
+
+		// Add title for the 3 groups
+		svg
+			.append("text")
+			.attr("x", 0)
+			.attr("y", 2)
+			.text(selector)
+			.attr("font-size", "19px")
+			.attr("fill", "black")
+	}
+
+	render("investicija")
+	render("proizvod")
+</script>
