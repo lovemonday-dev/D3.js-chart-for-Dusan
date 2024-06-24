@@ -1,78 +1,20 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/chart1.css">
+<html lang="en">
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v6.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>D3-Stacked-Bar-Chart (Percentage)</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
 
 <body>
-	<div class="first-line">
-		<div id="investicija" style="display: inline-block;"></div>
-		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 512 512"
-			style="position: relative; bottom:150px;">
-			<path fill="#99D9EA" stroke="black" stroke-width="3"
-				d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
-		</svg>
-		<div id="cost-per-area"
-			style="width: 200px; height: 200px; background-color: #6868E1; text-align: center; padding-top: 30px; display: inline-block; position: relative; bottom: 120px;">
-			<p>3.5M ÷ 1,880m²</p>
-			<p>=</p>
-			<p style="font-size: 30px;">1,862€</p>
-		</div>
-		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 512 512"
-			style="position: relative; bottom:150px;">
-			<path fill="#99D9EA" stroke="black" stroke-width="3"
-				d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
-		</svg>
-		<div id="proizvod" style="display: inline-block;"></div>
-	</div>
-	<div class="second-line">
-		<div style="display: inline-block;bottom: 125px; position: relative; left: 149px;">
-			<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 320 512">
-				<path fill="#99D9EA" stroke="black" stroke-width="3"
-					d="M318 177.5c3.8-8.8 2-19-4.6-26l-136-144C172.9 2.7 166.6 0 160 0s-12.9 2.7-17.4 7.5l-136 144c-6.6 7-8.4 17.2-4.6 26S14.4 192 24 192H96l0 288c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32l0-288h72c9.6 0 18.2-5.7 22-14.5z" />
-			</svg>
-			<div>
-				<div style="color: black; font-size: 30px; font-family: cursive;">3.5M€</div>
-			</div>
-			<div style="    position: relative; left: -128px;top: 31px;">
-				<div style="font-family: cursive;">Opis investicije:</div>
-				<div style="font-family: cursive;">Stambena zgrada...</div>
-			</div>
-
-		</div>
-		<div class="profit-show"
-			style="width: 250px; height: 250px; background-color: #FFF777; position: relative; display: inline-block; margin-left: 263px;">
-			<p>425€</p>
-			<p class="profit-percent">50</p>
-			<div style="width: 200px; height: 200px; background-color: #8B8BE8; ">
-				<p>425€</p>
-				<p class="profit-percent">50</p>
-				<div style="width: 160px; height: 160px; background-color: #6868E1; ">
-					<p style="font-weight: bolder; font-size: 30px; left:80px; top:-50px;">2,287€</p>
-					<p style=" bottom: 0;">1,862€</p>
-				</div>
-			</div>
-		</div>
-		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 512 512"
-			style="position: relative; bottom: 80px; left:45px">
-			<path fill="#99D9EA" stroke="black" stroke-width="3"
-				d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z" />
-		</svg>
-		<div style="display: inline-block; position: relative; bottom: 110px; left: 80px; text-align: center;">
-			<div style="color: black; font-family: cursive;">prodaja</div>
-			<div style="color: black; font-size: 30px; font-family: cursive;">5.1M€</div>
-		</div>
-		<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 320 512"
-			style="display: inline-block; position: relative; bottom: 210px;">
-			<path fill="#99D9EA" stroke="black" stroke-width="3"
-				d="M2 334.5c-3.8 8.8-2 19 4.6 26l136 144c4.5 4.8 10.8 7.5 17.4 7.5s12.9-2.7 17.4-7.5l136-144c6.6-7 8.4-17.2 4.6-26s-12.5-14.5-22-14.5l-72 0 0-288c0-17.7-14.3-32-32-32L128 0C110.3 0 96 14.3 96 32l0 288-72 0c-9.6 0-18.2 5.7-22 14.5z" />
-		</svg>
-
+	<div>
+		<div id="investicija" style="display: inline-block; width: 500px; height: 300px;"  ></div>
+		<div id="proizvod" style="display: inline-block; width: 500px; height: 300px;"></div>
 	</div>
 </body>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="index.js" charset="utf-8"></script>
 
-<!-- Create a div where the graph will take place -->
-
-<script src="script/chart1.js"></script>
+</html>

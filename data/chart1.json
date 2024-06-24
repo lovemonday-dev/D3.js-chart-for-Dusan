@@ -1,0 +1,241 @@
+{
+	"investicija": [
+		{
+			"value": 3500000,
+			"kvadrata": 1880,
+			"invest_kvadrat": 1862,
+			"description": "<p class='desc'>Opis investicije:<br>Stambena zgrada...</p>",
+			"children": [
+				{
+					"name": "PLAC",
+					"value": 1300000,
+					"image": "some_image.jpg",
+					"link": "http://somelink.com?id=1",
+					"color": "#6060e0"
+				},
+				{
+					"name": "SOFTCOST",
+					"value": 300000,
+					"color": "#ff8259",
+					"children": [
+						{
+							"name": "Nadzor",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?id=1",
+							"value": 100000
+						},
+						{
+							"name": "Dozvola",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?id=1",
+							"value": 100000
+						},
+						{
+							"name": "Direkcija",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?id=1",
+							"value": 100000
+						}
+					]
+				},
+				{
+					"name": "HARDCOST",
+					"value": 1900000,
+					"color": "#fff214",
+					"image": "some_image.jpg",
+					"link": "http://somelink.com?id=1",
+					"children": [
+						{
+							"name": "Izvodjenje",
+							"value": 600000,
+							"children": [
+								{
+									"job_id": "1",
+									"name": "Obezbedjenje temeljne jame",
+									"value": 200000,
+									"izvodjac": "InKop",
+									"izvodjac_id": 21,
+									"trajanje": 33,
+									"image": "some_image.jpg",
+									"link": "http://somelink.com?job_id=1",
+									"rok": "20-12-2024"
+								},
+								{
+									"job_id": "2",
+									"name": "Iskop",
+									"value": 200000,
+									"izvodjac": "InKop",
+									"izvodjac_id": 21,
+									"trajanje": 33,
+									"image": "some_image.jpg",
+									"link": "http://somelink.com?job_id=1",
+									"rok": "20-12-2024"
+								},
+								{
+									"job_id": "3",
+									"name": "Temeljna ploca",
+									"value": 200000,
+									"izvodjac": "InKop",
+									"izvodjac_id": 21,
+									"trajanje": 33,
+									"image": "some_image.jpg",
+									"link": "http://somelink.com?job_id=1",
+									"rok": "20-12-2024"
+								}
+							]
+						},
+						{
+							"name": "Materijal",
+							"value": 1300000,
+							"children": [
+								{
+									"order_id": "3",
+									"name": "Armaturna mreza",
+									"value": 300000,
+									"dobavljac": "Metal metal",
+									"dobavljac_id": 22,
+									"image": "some_image.jpg",
+									"link": "http://somelink.com?job_id=1",
+									"isporuka": "20-12-2024"
+								},
+								{
+									"order_id": "3",
+									"name": "Plocice",
+									"value": 300000,
+									"dobavljac": "RA KERAMIKA",
+									"dobavljac_id": 21,
+									"image": "some_image.jpg",
+									"link": "http://somelink.com?job_id=1",
+									"isporuka": "20-12-2024"
+								},
+								{
+									"order_id": "3",
+									"name": "Lepak za fasadu",
+									"value": 700000,
+									"dobavljac": "ROMA",
+									"dobavljac_id": 25,
+									"image": "some_image.jpg",
+									"link": "http://somelink.com?job_id=1",
+									"isporuka": "20-12-2024"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"proizvod": [
+		{
+			"value": 5100000,
+			"kvadrata": 1880,
+			"invest_kvadrat": 2712,
+			"children": [
+				{
+					"name": "Stanovi",
+					"kvadrata": 1284,
+					"komada": 21,
+					"color": "#6060e0",
+					"children": [
+						{
+							"name": "Stan 1",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 1,
+							"kvadrata": 45.44,
+							"value": 1200000
+						},
+						{
+							"name": "Stan 2",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 2,
+							"kvadrata": 85.5,
+							"value": 2300000
+						},
+						{
+							"name": "Stan 3",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"sprat": 2,
+							"kvadrata": 152,
+							"value": 3300000
+						}
+					]
+				},
+				{
+					"name": "Lokali",
+					"kvadrata": 480,
+					"komada": 2,
+					"color": "#ff8259",
+					"children": [
+						{
+							"name": "Lokal 1",
+							"opis": "Lep s pogledom na ulicu",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 4300000
+						},
+						{
+							"name": "Lokal 2",
+							"opis": "Na 2 sprata, idealan za restoran",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 1300000
+						},
+						{
+							"name": "Lokal 3",
+							"opis": "Veliki magacin",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"kvadrata": 152,
+							"value": 1300000
+						}
+					]
+				},
+				{
+					"name": "Garažna mesta",
+					"kvadrata": 980,
+					"komada": 21,
+					"color": "#fff214",
+					"children": [
+						{
+							"name": "Garažno mesto 1",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-2",
+							"kvadrata": 12.5,
+							"value": 20000
+						},
+						{
+							"name": "Garažno mesto 2",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-2",
+							"kvadrata": 12.5,
+							"value": 20000
+						},
+						{
+							"name": "Garažno mesto 3",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 20000
+						},
+						{
+							"name": "Garažno mesto 4",
+							"image": "some_image.jpg",
+							"link": "http://somelink.com?job_id=1",
+							"nivo": "-1",
+							"kvadrata": 12.5,
+							"value": 20000
+						}
+					]
+				}
+			]
+		}
+	]
+}
