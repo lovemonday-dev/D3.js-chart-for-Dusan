@@ -20,7 +20,6 @@ function calculateTotalValues(data) {
 }
 
 function init() {
-	console.log(data2)
 
 	/* to color elements we use the class name ( slugigy(name) ) */
 	var domain = data2.map(function (d) { return slugify(d.name); })
@@ -43,7 +42,6 @@ function init() {
 let selectedClassList = []
 
 function click(d) {
-	console.log(d)
 	if (selectedClassList.indexOf(d.class) == -1) {
 		d3.selectAll(`.${d.class}`)
 			.classed('selected', true)
@@ -73,6 +71,7 @@ function resetSelected() {
 	}
 	init()
 	d3.select('#CountOfSelectedCells').text(0)
+	selectedClassList = [];
 }
 
 function removeElementFromArray(array, element) {
