@@ -4,13 +4,12 @@ fetch('../data/chart2.json')
 	.then((json) => { jsonData = json; init(jsonData) });
 
 
-
+var width, height, dimensionX, dimensionY
 function init(jsonData) {
 	// grid basic variables
 
-	let dimensionY = maxDivisorBelow(Math.sqrt(jsonData.squares[0].total), jsonData.squares[0].total);
-	let dimensionX = jsonData.squares[0].total / dimensionY
-
+	dimensionY = maxDivisorBelow(Math.sqrt(jsonData.squares[0].total), jsonData.squares[0].total);
+	dimensionX = jsonData.squares[0].total / dimensionY
 
 	function maxDivisorBelow(floatNumber, integer) {
 		let maxInt = Math.floor(floatNumber);
@@ -21,9 +20,7 @@ function init(jsonData) {
 		}
 		return 1;
 	}
-	let height, width
 	width = height = Math.floor((screen.width) / (dimensionX * 2))
-	console.log(width)
 	if (width > 50) {
 		width = height = 50
 	}
@@ -74,7 +71,7 @@ function init(jsonData) {
 			let selectedCell = {}
 			selectedCell.x = maxDivisibleBy(d3.event.sourceEvent.x, width)
 			selectedCell.y = maxDivisibleBy(d3.event.sourceEvent.y, height)
-			if (!deepEqual(selectedCell, previousCell) && !objectExistsInArray(selectedCellList, selectedCell)) {
+			if (!deepEqual(selectedCell, previousCell) && !objectExistsInArray(selectedCellList, selectedCell) && staysInAvailabe(selectedCell)) {
 				changeStatusOfAffected(selectedCell)
 				previousCell = selectedCell
 				selectedCellList.push(selectedCell)
@@ -109,10 +106,6 @@ function init(jsonData) {
 			}
 			else d3.select(this).classed("freetosell", true);
 		})
-		.style('pointer-events', function (d) {
-			if (d.reserved) return "none"
-			return 'auto'
-		})
 	// apply handler for click and drag only for cells free to sell (not reserved)
 	let freetosell = rect
 		.filter('.freetosell')
@@ -127,10 +120,13 @@ function init(jsonData) {
 			CountOfSelectedCells.text(selectedCellList.length)
 		})
 		.call(drag)
+		.append('title')
+		.html((d, i) =>
+			`<p class='tooltip'>Free for sale</p>`
+		);
 	//Assign tooltip for reserved cells.
 	let reserved = rect
 		.filter('.reserved')
-		.style('pointer-events', 'none')
 		.append('title')
 		.html((d, i) =>
 			`<p class='tooltip'>Reserved by ${d.owner}</p>`
@@ -308,4 +304,9 @@ function deepEqual(obj1, obj2) {
 		}
 	}
 	return true;
+}
+function staysInAvailabe(selectedCell) {
+	console.log(jsonData)
+	if (width * dimensionX > selectedCell.x && height * dimensionY > selectedCell.y && selectedCell.x > 0 && selectedCell.y >= jsonData.squares[0].reserved[0].amount * height / dimensionX) return true
+	return false
 }
