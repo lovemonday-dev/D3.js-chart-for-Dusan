@@ -1,0 +1,30 @@
+*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	p {
+		color: white;
+		margin-left: 12px;
+		margin-right: 12px;
+		font-family: cursive;
+	}
+
+	.profit-show,
+	.profit-show div {
+		border: 1px solid black;
+		bottom: 0;
+		position: absolute;
+	}
+
+	.profit-show p {
+		position: absolute;
+	}
+
+	.profit-show p.profit-percent {
+		bottom: 0;
+		right: 0;
+		font-weight: bolder;
+		font-size: 20px;
+	}

@@ -1,0 +1,143 @@
+{
+	"squares": [
+	  {
+		"apartments": [
+		  {
+			"id": 1,
+			"name": "Stan broj 1",
+			"surface": 45.44,
+			"floor": 1,
+			"color": "#6060e0",
+			"image": "some_image.jpg",
+			"link": "http://somelink.com?job_id=1",
+			"value": 120000
+		  },
+		  {
+			"id": 2,
+			"name": "Stan broj 2",
+			"surface": 52.14,
+			"floor": 1,
+			"color": "#DDE0BD",
+			"image": "some_image.jpg",
+			"link": "http://somelink.com?job_id=1",
+			"value": 145000
+		  },
+		  {
+			"id": 3,
+			"name": "Stan broj 3",
+			"surface": 85.32,
+			"floor": 1,
+			"color": "#D0D1AC",
+			"image": "some_image.jpg",
+			"link": "http://somelink.com?job_id=1",
+			"value": 135000
+		  },
+		  {
+			"id": 4,
+			"name": "Stan broj 4",
+			"surface": 105.75,
+			"floor": 1,
+			"color": "#B6A39E",
+			"image": "some_image.jpg",
+			"link": "http://somelink.com?job_id=1",
+			"value": 223000
+		  },
+		  {
+			"id": 5,
+			"name": "Stan broj 5",
+			"surface": 95.75,
+			"floor": 2,
+			"color": "#948B89",
+			"image": "some_image.jpg",
+			"link": "http://somelink.com?job_id=1",
+			"value": 205000
+		  }
+		],
+		"garage_space": [
+		  {
+			"id": 6,
+			"name": "Garažno mesto 1",
+			"surface": 12.5,
+			"floor": -2,
+			"color": "#845EC2",
+			"link": "http://somelink.com?job_id=1",
+			"value": 19500
+		  },
+		  {
+			"id": 7,
+			"name": "Garažno mesto 2",
+			"surface": 12.5,
+			"floor": -2,
+			"color": "#2C73D2",
+			"link": "http://somelink.com?job_id=1",
+			"value": 19500
+		  },
+		  {
+			"id": 8,
+			"name": "Garažno mesto 3",
+			"surface": 12.5,
+			"floor": -2,
+			"color": "#0081CF",
+			"link": "http://somelink.com?job_id=1",
+			"value": 19500
+		  },
+		  {
+			"id": 9,
+			"name": "Garažno mesto 4",
+			"surface": 12.5,
+			"floor": -2,
+			"color": "#0089BA",
+			"link": "http://somelink.com?job_id=1",
+			"value": 19500
+		  },
+		  {
+			"id": 10,
+			"name": "Garažno mesto 5",
+			"surface": 12.5,
+			"floor": -1,
+			"color": "#008E9B",
+			"link": "http://somelink.com?job_id=1",
+			"value": 19500
+		  },
+		  {
+			"id": 11,
+			"name": "Garažno mesto 6",
+			"surface": 12.5,
+			"floor": -1,
+			"color": "#008F7A",
+			"link": "http://somelink.com?job_id=1",
+			"value": 19500
+		  }
+		],
+		"commercial_space": [
+		  {
+			"id": 12,
+			"name": "Lokal 1",
+			"surface": 132.5,
+			"floor": 0,
+			"color": "#00817D",
+			"link": "http://somelink.com?job_id=1",
+			"value": 295000
+		  },
+		  {
+			"id": 13,
+			"name": "Lokal 2",
+			"surface": 144,
+			"floor": 0,
+			"color": "#00737A",
+			"link": "http://somelink.com?job_id=1",
+			"value": 325000
+		  }
+		],
+		"warehouse_space": [
+		  {
+			"name": "Magacin 1",
+			"floor": 0,
+			"surface": 30,
+			"color": "#006658",
+			"value": 25000
+		  }
+		]
+	  }
+	]
+  }

@@ -1,0 +1,22 @@
+{
+		"squares": [
+			{
+				"total": 2000,
+				"value": 1862,
+				"avaliable": [
+					{
+						"name": "slobodan",
+						"amount": 1700,
+						"color": "#6060e0"
+					}
+				],
+				"reserved": [
+					{
+						"name": "rezervisan",
+						"amount": 300,
+						"color": "#ff8259"
+					}
+				]
+			}
+		]
+	}
