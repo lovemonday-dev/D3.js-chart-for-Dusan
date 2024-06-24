@@ -33,7 +33,7 @@ function d3waffle() {
 
       data.forEach(function (d) {
         d3.range(d.scalevalue).forEach(function (e) {
-          detaildata.push({ name: d.name, class: d.class })
+          detaildata.push({ name: d.name, class: d.class, color: d.color })
         });
       });
 
@@ -51,7 +51,7 @@ function d3waffle() {
         .attr("width", "100%")
         .attr("height", height + "px")
         .append("g")
-        .attr("transform", "rotate(90,150,150)")
+        .attr("transform", "rotate(90,400,400)")
         .style("cursor", "default");
 
       var tooltip = d3.select("body")
@@ -82,7 +82,7 @@ function d3waffle() {
         .attr('font-family', 'FontAwesome')
         .attr("transform", function (d) { return "translate(" + gridSize / 2 + "," + 5 / 6 * gridSize + ")"; })
         .style("text-anchor", "middle")
-        .style('fill', function (d) { return colorscale(d.class); })
+        .style('fill', function (d) { return d.color; })
         .style("font-size", function (d) {
           val = 9;
           val2 = 2.5;

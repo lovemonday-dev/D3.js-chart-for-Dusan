@@ -1,22 +1,26 @@
-var data2 = {}
+let data2 = []
 fetch('../data/chart3.json')
 	.then((res) => res.json())
-	.then((json) => { data2 = calculateTotalValues(json); init() })
+	.then((json) => { calculateTotalValues(json); init() })
 
 function calculateTotalValues(data) {
-	const result = [];
 	data.squares.forEach(square => {
-		for (const [key, value] of Object.entries(square)) {
-			if (Array.isArray(value)) {
-				const totalValue = value.reduce((sum, item) => sum += item.value, 0);
-				result.push({ name: key, value: totalValue });
+		['apartments', 'garage_space', 'commercial_space', 'warehouse_space'].forEach(type => {
+			if (square[type]) {
+				square[type].forEach(item => {
+					data2.push({
+						"name": item.name,
+						"value": Math.floor(item.surface),
+						"color": item.color
+					});
+				});
 			}
-		}
+		});
 	});
-	return result;
 }
 
 function init() {
+	console.log(data2)
 
 	/* to color elements we use the class name ( slugigy(name) ) */
 	var domain = data2.map(function (d) { return slugify(d.name); })
@@ -24,12 +28,12 @@ function init() {
 	var palette = d3.scale.ordinal().domain(domain).range(range);
 
 	var chart4 = d3waffle()
-		.rows(15)
-		.scale(1 / 500 / 10)
+		.rows(25)
+		.scale(1 / 1 / 1)
 		.colorscale(palette)
 		.appearancetimes(function (d, i) { return i * 10 + Math.random() * 250; })
-		.height(500)
-		.width(300)
+		.height(600)
+		.width(500)
 
 	d3.select("#container-4")
 		.datum(data2)
