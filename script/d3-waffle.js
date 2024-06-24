@@ -91,7 +91,7 @@ function d3waffle() {
         })
         .on("mouseover", mouseover)
         .on("mouseout", mouseout)
-        .on("mousemove", mousemove)
+        // .on("mousemove", mousemove)
         .transition()
         .duration(appearancetimes)
         .style("opacity", 1);
@@ -104,7 +104,7 @@ function d3waffle() {
         .attr("height", gridSize)
         .on("mouseover", mouseover)
         .on("mouseout", mouseout)
-        .on("mousemove", mousemove)
+        // .on("mousemove", mousemove)
         .on("click", click)
         .style("opacity", 0)
 
@@ -140,7 +140,7 @@ function d3waffle() {
 
       function mouseover(d) {
         tooltip.transition().duration(100).style("opacity", .9);
-        el = data.filter(function (e) { return e.name == d.name })[0]
+        el = data.filter(function (e) { return e.class == d.class })[0]
         txt = "<b>" + el.name + "</b><br>" + d3.format(',')(el.value) + "<br>(" + d3.format(".0%")(el.percent) + ")"
         tooltip.html(txt);
 
@@ -153,11 +153,11 @@ function d3waffle() {
         d3.select("#" + idcontainer).selectAll("text").transition().duration(100).style("opacity", 1);
       }
 
-      function mousemove(d) {
-        tooltip
-          .style("left", (d3.event.pageX + 0) + "px")
-          .style("top", (d3.event.pageY + - 70) + "px");
-      }
+      // function mousemove(d) {
+      //   tooltip
+      //     .style("left", (d3.event.pageX + 0) + "px")
+      //     .style("top", (d3.event.pageY + - 70) + "px");
+      // }
 
     });
   }
