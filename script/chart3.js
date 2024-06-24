@@ -43,14 +43,15 @@ function init() {
 let selectedClassList = []
 
 function click(d) {
+	console.log(d)
 	if (selectedClassList.indexOf(d.class) == -1) {
 		d3.selectAll(`.${d.class}`)
 			.classed('selected', true)
 		selectedClassList.push(d.class)
-		$('#CountOfSelectedCells').text(calculateSelectedValuesSum(data2, selectedClassList))
+		d3.select('#CountOfSelectedCells').text(calculateSelectedValuesSum(data2, selectedClassList))
 	} else {
 		selectedClassList = removeElementFromArray(selectedClassList, d.class)
-		$('#CountOfSelectedCells').text(calculateSelectedValuesSum(data2, selectedClassList))
+		d3.select('#CountOfSelectedCells').text(calculateSelectedValuesSum(data2, selectedClassList))
 		d3.selectAll(`.${d.class}`)
 			.classed('selected', false)
 	}
@@ -71,7 +72,7 @@ function resetSelected() {
 		list.removeChild(list.children[0]);
 	}
 	init()
-	$('#CountOfSelectedCells').text(0)
+	d3.select('#CountOfSelectedCells').text(0)
 }
 
 function removeElementFromArray(array, element) {
