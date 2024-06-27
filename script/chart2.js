@@ -307,6 +307,6 @@ function deepEqual(obj1, obj2) {
 }
 function staysInAvailabe(selectedCell) {
 	console.log(jsonData)
-	if (width * dimensionX > selectedCell.x && height * dimensionY > selectedCell.y && selectedCell.x > 0 && selectedCell.y >= jsonData.squares[0].reserved[0].amount * height / dimensionX) return true
+	if (width * dimensionX > selectedCell.x && height * dimensionY > selectedCell.y && selectedCell.x >= 0 && selectedCell.y >= jsonData.squares[0].reserved[0].amount * height / dimensionX) return true
 	return false
 }
