@@ -51,7 +51,7 @@ function d3waffle() {
         .attr("width", "100%")
         .attr("height", height + "px")
         .append("g")
-        .attr("transform", "rotate(90,400,400)")
+        .attr("transform", "rotate(270,400,200)")
         .style("cursor", "default");
 
       var tooltip = d3.select("body")
@@ -98,6 +98,7 @@ function d3waffle() {
 
       nodes.append("rect")
         .style("fill", "white")
+        .style('cursor', 'pointer')
         .attr('class', function (d) { return d.class; })
         .style("stroke", "gray")
         .attr("width", gridSize)
@@ -139,6 +140,9 @@ function d3waffle() {
         .attr("transform", function (d) { return "translate(" + gridSize / 2 + "," + 5 / 6 * gridSize + ")"; })
 
       function mouseover(d) {
+        tooltip
+          .style("left", (d3.event.pageX + 20) + "px")
+          .style("top", (d3.event.pageY + - 90) + "px");
         tooltip.transition().duration(100).style("opacity", .9);
         el = data.filter(function (e) { return e.class == d.class })[0]
         txt = "<b>" + el.name + "</b><br>" + d3.format(',')(el.value) + "<br>(" + d3.format(".0%")(el.percent) + ")"
