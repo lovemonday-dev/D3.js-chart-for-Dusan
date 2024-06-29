@@ -111,12 +111,12 @@ function render(jsonData) {
 			</svg>
       `)
   }
-  d3.select("#cost-per-area").on('mouseover', function(){
-    d3.select('.profit-show-default p').style('display','block')
+  d3.select("#cost-per-area").on('mouseover', function () {
+    d3.select('.profit-show-default p').style('display', 'block')
   })
-  .on('mouseout', function(){
-    d3.select('.profit-show-default p').style('display','none')
-  })
+    .on('mouseout', function () {
+      d3.select('.profit-show-default p').style('display', 'none')
+    })
 
   function drawTreemap(selector) {
     let data2 = jsonData[selector][0]
@@ -199,10 +199,10 @@ function render(jsonData) {
         .append("title")
         .text(function (d) { return d.data.name + " (" + formatNumber(d.value) + ")"; });
 
-      children.append("text")
-        .attr("class", "ctext")
-        .text(function (d) { return d.data.name; })
-        .call(text2);
+      // children.append("text")
+      //   .attr("class", "ctext")
+      //   .text(function (d) { return d.data.name; })
+      //   .call(text2);
 
       g.append("rect")
         .attr("class", "parent")
@@ -228,7 +228,7 @@ function render(jsonData) {
 
         var g2 = display(d),
           t1 = g1.transition().duration(1000)
-          t2 = g2.transition().duration(1000)
+        t2 = g2.transition().duration(1000)
 
 
         // Update the domain only after entering new elements.
@@ -337,12 +337,12 @@ function render(jsonData) {
   updateDrillDown();
 
   d3.select('.profit-show-default')
-  .on('mouseover', function (params) {
-    d3.select('.profit-show-default p').style('display', 'block')
-  })
-  .on('mouseout', function (params) {
-    d3.select('.profit-show-default p').style('display', 'none')
-  })
+    .on('mouseover', function (params) {
+      d3.select('.profit-show-default p').style('display', 'block')
+    })
+    .on('mouseout', function (params) {
+      d3.select('.profit-show-default p').style('display', 'none')
+    })
 
 }
 
