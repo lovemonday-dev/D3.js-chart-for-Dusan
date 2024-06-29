@@ -75,39 +75,36 @@ function d3waffle() {
         .attr("transform", function (d) { return "translate(" + (d.col) * gridSize + "," + (rows - d.row - 1) * gridSize + ")"; });
 
       /* this is necesary, when the icons are small/thin activate mouseout */
-      nodes.append("text")
+      nodes.append("rect")
         .style("opacity", 0)
-        .html(icon)
         .attr('class', function (d) { return d.class; })
-        .attr('font-family', 'FontAwesome')
-        .attr("transform", function (d) { return "translate(" + gridSize / 2 + "," + 5 / 6 * gridSize + ")"; })
-        .style("text-anchor", "middle")
         .style('fill', function (d) { return d.color; })
-        .style("font-size", function (d) {
-          val = 9;
-          val2 = 2.5;
-          textsize = Math.min(val2 * gridSize, (val2 * gridSize - val) / this.getComputedTextLength() * val);
-          return textsize * adjust + "px";
-        })
+        .style('cursor', 'pointer')
+        .style('stroke', 'white')
+
+        .attr('width', gridSize)
+        .attr('height', gridSize)
         .on("mouseover", mouseover)
         .on("mouseout", mouseout)
+        .on("click", click)
+
         // .on("mousemove", mousemove)
         .transition()
         .duration(appearancetimes)
         .style("opacity", 1);
 
-      nodes.append("rect")
-        .style("fill", "white")
-        .style('cursor', 'pointer')
-        .attr('class', function (d) { return d.class; })
-        .style("stroke", "gray")
-        .attr("width", gridSize)
-        .attr("height", gridSize)
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout)
-        // .on("mousemove", mousemove)
-        .on("click", click)
-        .style("opacity", 0)
+      // nodes.append("rect")
+      //   .style("fill", "white")
+      //   .style('cursor', 'pointer')
+      //   .attr('class', function (d) { return d.class; })
+      //   .style("stroke", "gray")
+      //   .attr("width", gridSize)
+      //   .attr("height", gridSize)
+      //   .on("mouseover", mouseover)
+      //   .on("mouseout", mouseout)
+      //   // .on("mousemove", mousemove)
+      //   .on("click", click)
+      //   .style("opacity", 0)
 
       var legend = svg.selectAll('.legend')
         .data(data)
@@ -148,13 +145,13 @@ function d3waffle() {
         txt = "<b>" + el.name + "</b><br>" + d3.format(',')(el.value) + "<br>(" + d3.format(".0%")(el.percent) + ")"
         tooltip.html(txt);
 
-        d3.select("#" + idcontainer).selectAll("text").transition().duration(100).style("opacity", 0.2);
-        d3.select("#" + idcontainer).selectAll("text." + d.class).transition().duration(100).style("opacity", 1);
+        d3.select("#" + idcontainer).selectAll("rect").transition().duration(100).style("opacity", 0.2);
+        d3.select("#" + idcontainer).selectAll("rect." + d.class).transition().duration(100).style("opacity", 1);
       }
 
       function mouseout(d) {
         tooltip.transition().duration(100).style("opacity", 0);
-        d3.select("#" + idcontainer).selectAll("text").transition().duration(100).style("opacity", 1);
+        d3.select("#" + idcontainer).selectAll("rect").transition().duration(100).style("opacity", 1);
       }
 
       // function mousemove(d) {
