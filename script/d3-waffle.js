@@ -138,8 +138,8 @@ function d3waffle() {
 
       function mouseover(d) {
         tooltip
-          .style("left", (d3.event.pageX - 250) + "px")
-          .style("top", (d3.event.pageY + - 90) + "px");
+          .style("left", 800 + "px")
+          .style("top", 200 + "px");
         tooltip.transition().duration(100).style("opacity", .9);
         el = data.filter(function (e) { return e.class == d.class })[0]
         txt = "<b>" + el.name + "</b><br>" + d3.format(',')(el.value) + "<br>(" + d3.format(".0%")(el.percent) + ")"
