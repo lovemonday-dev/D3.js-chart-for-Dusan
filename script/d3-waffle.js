@@ -54,7 +54,7 @@ function d3waffle() {
         .attr("transform", "rotate(270,400,200)")
         .style("cursor", "default");
 
-      var tooltip = d3.select("body")
+      var tooltip = d3.select("#container-4")
         .append("div")
         .attr("class", "waffle-tooltip")
         .style("position", "absolute")
@@ -138,7 +138,7 @@ function d3waffle() {
 
       function mouseover(d) {
         tooltip
-          .style("left", (d3.event.pageX + 20) + "px")
+          .style("left", (d3.event.pageX - 150) + "px")
           .style("top", (d3.event.pageY + - 90) + "px");
         tooltip.transition().duration(100).style("opacity", .9);
         el = data.filter(function (e) { return e.class == d.class })[0]
