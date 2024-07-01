@@ -138,7 +138,7 @@ function d3waffle() {
 
       function mouseover(d) {
         tooltip
-          .style("left", (d3.event.pageX - 150) + "px")
+          .style("left", (d3.event.pageX - 250) + "px")
           .style("top", (d3.event.pageY + - 90) + "px");
         tooltip.transition().duration(100).style("opacity", .9);
         el = data.filter(function (e) { return e.class == d.class })[0]
